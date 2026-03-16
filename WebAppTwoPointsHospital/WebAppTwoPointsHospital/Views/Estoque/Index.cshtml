@@ -1,0 +1,77 @@
+﻿@model WebAppTwoPointsHospital.Models.ViewModel
+
+@{
+    ViewData["Title"] = "Index";
+}
+
+<article class="container mt-4">
+
+    <h2 class="mb-4 text-center">Controle de Estoque</h2>
+
+    <div class="row g-4">
+
+        <div class="col-md-4">
+            <div class="card shadow-sm">
+                <div class="card-body text-center">
+                    <h5 class="card-title">Consultar Medicamento</h5>
+                    <p class="card-text">Consulte os medicamentos cadastrados no sistemas</p>
+                    <a asp-controller="Estoque" asp-action="Consultar" class="btn btn-success">
+                        Acessar
+                    </a>
+                </div>
+            </div>
+        </div>
+
+        <div class="col-md-4">
+            <div class="card shadow-sm">
+                <div class="card-body text-center">
+                    <h5 class="card-title">Medicamentos</h5>
+                    <p class="card-text">Veja os Medicamentos Cadastrados no Sistema</p>
+                    <a asp-controller="Estoque" asp-action="Listar" class="btn btn-success">
+                        Acessar
+                    </a>
+                </div>
+            </div>
+        </div>
+        
+        <div class="col-md-4">
+            <div class="card shadow-sm">
+                <div class="card-body text-center">
+                    <h5 class="card-title">Usuários</h5>
+                    <p class="card-text">Gerenciar usuários do sistema</p>
+                    <a asp-controller="Usuario" asp-action="Usuarios" class="btn btn-success">
+                        Acessar
+                    </a>
+                </div>
+            </div>
+        </div>
+
+    </div>
+    
+    <div class="row mt-5">
+
+        <div class="col-md-4">
+            <div class="alert alert-primary text-center">
+                <h4>@Model.TotalMedicamentos</h4>
+                Medicamentos cadastrados
+            </div>
+        </div>
+
+        <div class="col-md-4">
+            <div class="alert alert-warning text-center">
+                <h4>0</h4>
+                Lotes próximos do vencimento
+            </div>
+        </div>
+
+        <div class="col-md-4">
+            <div class="alert alert-success text-center">
+                <h4>@Model.TotalUsuarios</h4>
+                Usuários Cadastrados
+            </div>
+        </div>
+
+    </div>
+
+</article> 
+

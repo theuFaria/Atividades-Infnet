@@ -1,0 +1,65 @@
+﻿@model Estoque
+
+@{
+    ViewData["Title"] = "Movimentar Estoque";
+}
+
+<div class="container mt-5">
+    <div class="row justify-content-center">
+        <div class="col-md-6">
+            <div class="card shadow border-0">
+                <div class="card-header bg-warning text-dark text-center py-3">
+                    <h3 class="mb-0 fw-bold">⇅ Movimentação de Estoque</h3>
+                </div>
+                
+                <div class="card-body p-4">
+                    <p class="text-muted text-center mb-4">
+                        Informe o nome do medicamento para atualizar a quantidade disponível.
+                    </p>
+
+                    <form asp-controller="Estoque" asp-action="Movimentar" method="post">
+                        
+                        <div class="mb-3">
+                            <label class="form-label fw-bold">Nome do Medicamento:</label>
+                            <input type="text" name="nomeM" class="form-control form-control-lg" 
+                                   placeholder="Ex: Paracetamol" required />
+                        </div>
+
+                        <div class="mb-3">
+                            <label class="form-label fw-bold">Tipo de Operação:</label>
+                            <select name="tipoMovimentacao" class="form-select form-select-lg" required>
+                                <option value="" disabled selected>Selecione uma opção diferente</option>
+                                <option value="Entrada">Dar ENTRADA</option>
+                                <option value="Saida">Dar SAÍDA</option>
+                            </select>
+                        </div>
+
+                        <div class="mb-4">
+                            <label class="form-label fw-bold">Quantidade:</label>
+                            <input type="number" name="quantidade" class="form-control form-control-lg" 
+                                   min="1" placeholder="0" required />
+                        </div>
+
+                        <div class="d-grid gap-2">
+                            <button type="submit" class="btn btn-warning btn-lg fw-bold shadow-sm">
+                                Confirmar Movimentação
+                            </button>
+                            <a asp-controller="Estoque" asp-action="Listar" class="btn btn-outline-secondary">
+                                Cancelar e Voltar à Lista
+                            </a>
+                        </div>
+                    </form>
+                </div>
+
+                @if (ViewBag.Mensagem != null)
+                {
+                    <div class="card-footer p-0">
+                        <div class="alert @(ViewBag.Cor ?? "alert-info") m-3 mb-3 shadow-sm">
+                            <strong>Aviso:</strong> @ViewBag.Mensagem
+                        </div>
+                    </div>
+                }
+            </div>
+        </div>
+    </div>
+</div>

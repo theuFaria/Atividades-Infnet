@@ -1,0 +1,40 @@
+﻿@model List<WebAppTwoPointsHospital.Models.Usuario>
+
+@{
+    ViewData["Title"] = "Usuarios Cadastrados";
+}
+
+<article>
+    <div>
+        <h1 class="text-center">@ViewData["Title"]</h1>
+    </div>
+    
+    <a asp-controller="Usuario" asp-action="Cadastro2" class="btn btn-success mb-3">Cadastrar</a>
+    <table class="table table-hover">
+        <thead>
+        <tr>
+            <th scope="col">Id</th>
+            <th scope="col">Nome</th>
+            <th></th>
+            <th></th>
+        </tr>
+        </thead>
+        <tbody>
+
+        @foreach (var user in Model)
+        {
+            <tr>
+                <th scope="row">@user.UsuarioId</th>
+                <td>@user.Nome</td>
+                <td>
+                    <a asp-controller="Usuario" asp-action="Detalhes" asp-route-id="@user.UsuarioId">Detalhes</a>
+                </td>
+                <td>
+                    <a asp-controller="Usuario" asp-action="Deletar" asp-route-id="@user.UsuarioId" >Deletar</a>
+                </td>
+            </tr>
+        }
+        </tbody>
+    </table>
+
+</article>

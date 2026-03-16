@@ -1,0 +1,30 @@
+﻿
+@{
+    ViewData["Title"] = "Controle de Estoque";
+    Layout = "_Layout2";
+}
+<div>
+    <h1>Estoque de Medicamentos</h1>
+    <p>Two Points Hospital</p>
+</div>
+
+<div>
+    <h3>Consultar Disponibilidade</h3>
+
+    <hr>
+    <form asp-controller="Estoque" asp-action="Consultar" method="post">
+
+        <div class="form-group mb-3">
+            <label class="form-label">Consultar Medicamento:</label>
+            <input type="text" name="nomeMedicamento" placeholder="Ex: Dipirona" required=""/>
+        </div>
+        <button type="submit" class="btn btn-primary">Consultar</button>
+    </form>
+
+    @if (ViewBag.Mensagem != null)
+    {
+        <div><strong>Resultado da busca: </strong> @ViewBag.Mensagem
+        </div>
+    }
+
+</div>

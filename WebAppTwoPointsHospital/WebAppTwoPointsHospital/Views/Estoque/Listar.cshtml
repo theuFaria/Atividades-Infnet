@@ -1,0 +1,60 @@
+﻿@model List<WebAppTwoPointsHospital.Models.Medicamento>
+
+@{
+ViewData["Title"] = "Lista de Medicamentos";
+    
+}
+
+<div>
+    <h2>Lista de Medicamentos</h2>
+    
+    <div class="mb-3 d-flex gap-2 mt-4">
+        <a asp-controller="Estoque" asp-action="Movimentar" class="btn btn-warning">
+            Entrada/Saída de Estoque
+        </a>
+        <a asp-controller="Estoque" asp-action="Consultar" class="btn btn-primary">
+            Consultar Item
+        </a>
+    </div>
+
+    <table class="table table-striped table-bordered mt-3 table-hover">
+        <thead class="table-dark">
+        <tr>
+            <th>Nome do Medicamento</th>
+            <th>Número do Lote</th>
+            <th>Quantidade no Estoque</th>
+            <th>Status</th>
+        </tr>
+        </thead>
+
+        <tbody>
+        @if (Model != null && Model.Count > 0)
+        {
+            @foreach (var item in Model)
+            {
+                <tr>
+                    <td>@item.Nome</td>
+                    <td>@item.LoteAtual.NumeroLote</td>
+                    <td>@item.LoteAtual.Quantidade</td>
+                    <td>
+                        @if (item.LoteAtual.ConsultarDisponibilidade())
+                        {
+                            <span class="badge bg-success">Disponível</span>
+                        }
+                        else
+                        {
+                            <span class="badge bg-danger">Esgotado</span>
+                        }
+                    </td>
+                </tr>
+            }
+        }
+        else
+        {
+            <tr>
+                <td colspan="4" class="text-center">Nenhum Medicamento cadastrado.</td>
+            </tr>
+        }
+        </tbody>
+    </table>
+</div>
