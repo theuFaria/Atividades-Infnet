@@ -1,0 +1,35 @@
+﻿@page
+@model CityBreaks.Web.Pages.Cities.FilterProperties
+
+@{
+    ViewData["Title"] = "Filter Properties";
+}
+
+<h1 class="mb-5">@ViewData["Title"]</h1>
+<form method="post" class="w-50">
+    <div class="mb-3">
+        <input asp-for="Input.CityName" type="text" placeholder="City Name" class="form-control"/>
+    </div>
+    <div class="mb-3">
+        <input asp-for="Input.PropertyName" type="text" placeholder="Property Name" class="form-control"/>
+    </div>
+    <div class="mb-3">
+        <input asp-for="Input.MaxPrice" type="text" placeholder="Max Price" class="form-control"/>
+    </div>
+    <div class="mb-3">
+        <input asp-for="Input.MinPrice" type="text" placeholder="Min Price" class="form-control"/>
+    </div>
+    <button type="submit" class="btn btn-primary">Search</button>
+</form>
+
+@if (Model.Properties != null)
+{
+    <ul class="mt-2">
+        @foreach (var property in Model.Properties)
+        {
+            <li>
+               <span class="fw-bold">@property.Name</span> - $@property.PricePerNight per night
+            </li>
+        }
+    </ul>
+}

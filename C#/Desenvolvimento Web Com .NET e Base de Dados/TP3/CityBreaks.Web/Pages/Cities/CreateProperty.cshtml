@@ -1,0 +1,37 @@
+﻿@page
+@model CityBreaks.Web.Pages.Cities.CreateProperty
+
+@{
+    ViewData["Title"] = "Create Property";
+}
+
+<!DOCTYPE html>
+
+<form method="post" class="w-50">
+    <h2>@ViewData["Title"]</h2>
+
+    <div class="mb-3 mt-5">
+        <label class="form-label fw-bold">City</label>
+        <select asp-for="Property.CityId" class="form-select" required>
+            <option value="" disabled selected class="p-3">Select a city</option>
+            @foreach (var city in Model.Cities)
+            {
+                <option value="@city.Id">@city.Name</option>
+            }
+        </select>
+    </div>
+    <div class="mb-3">
+        <input class="form-control" placeholder="Name" asp-for="Property.Name"/>
+        <span asp-validation-for="Property.Name" class="text-danger"></span>
+    </div>
+    <div class="mb-3">
+        <input class="form-control" placeholder="Price per Night" asp-for="Property.PricePerNight"/>
+        <span asp-validation-for="Property.PricePerNight" class="text-danger"></span>
+    </div>
+    <button type="submit" class="btn btn-primary form-control">Create</button>
+</form>
+
+@section Scripts {
+    <partial name="_ValidationScriptsPartial"/>
+}
+

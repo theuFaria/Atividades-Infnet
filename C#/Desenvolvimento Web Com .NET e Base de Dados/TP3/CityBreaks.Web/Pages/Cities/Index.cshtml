@@ -1,0 +1,43 @@
+﻿@page
+@model CityBreaks.Web.Pages.Cities.IndexModel
+
+<h2>Cidades</h2>
+
+<table class="table">
+    <thead>
+    <tr>
+        <th>Name</th>
+        <th>Country</th>
+        <th>Properties</th>
+        <th></th>
+    </tr>
+    </thead>
+    <tbody>
+    @foreach (var city in Model.Cities)
+    {
+        <tr>
+            <td>@city.Name</td>
+            <td>@city.Country.CountryName</td>
+            <td>
+                <ul>
+                    @foreach (var prop in city.Properties)
+                    {
+                            <li>@prop.Name - R$ @prop.PricePerNight</li>
+                    }
+                </ul>
+            </td>
+            <td>
+                <a asp-route-id="@city.Id" asp-page="EditProperty" class="btn btn-primary">Edit</a>
+            </td>
+        </tr>
+    }
+    </tbody>
+</table>
+<section class="d-flex gap-2">
+    
+    <div class="mt-3 d-flex gap-2">
+        <a class="btn btn-primary" asp-area="" asp-page="/Cities/CreateProperty">Add Property</a>
+        <a class="btn btn-primary" asp-area="" asp-page="/Cities/CityDetails">Detail</a>
+        <a class="btn btn-primary" asp-area="" asp-page="/Cities/FilterProperties">Filter Properties</a>
+    </div>
+</section>

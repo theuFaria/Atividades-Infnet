@@ -13,7 +13,8 @@
   <p>Os projetos estão organizados em pastas separadas:</p>
 <p>
   📁 Disciplina <br>
-  &nbsp;└── 📄 Atividade
+  &nbsp;└── 📁 Bloco <br>
+  &emsp;&emsp;&emsp;└── 📄 Atividade
 </p>
 
   <h2>🚀 Observações</h2>

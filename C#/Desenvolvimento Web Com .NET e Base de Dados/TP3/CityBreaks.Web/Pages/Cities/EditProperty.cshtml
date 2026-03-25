@@ -1,0 +1,41 @@
+﻿@page
+@model CityBreaks.Web.Pages.Cities.EditProperty
+
+@{
+    ViewData["Title"] = "Edit Property";
+}
+
+<form method="post" class="w-100">
+    <h1 class="text-center mb-3">@ViewData["Title"]</h1>
+    <div class="mb-3 d-flex gap-2 align-items-center">
+        <label class="form-label m-0 fw-bold">City Name: </label>
+        <input class="form-control w-50" asp-for="City.Name" readonly/>
+    </div>
+    <p class="fw-bold">Properties</p>
+    <hr/>
+    @for (int i = 0; i < Model.City.Properties.Count; i++)
+    {
+            <section class="d-flex w-100 align-items-center gap-2">
+                <div class="d-flex gap-2 align-items-center w-75">
+                    <label class="form-label m-0">Name:</label>
+                    <input asp-for="City.Properties[i].Name" class="form-control  w-50"/>
+                    <label class="form-label p-0 m-0">Price Per Night: </label>
+                    <input asp-for="City.Properties[i].PricePerNight" class="form-control  w-25"/>
+                    <input type="hidden" asp-for="City.Properties[i].Id"/>
+                    <input type="hidden" asp-for="City.Properties[i].CityId"/>
+                </div>
+                <div class="w-25 text-center">
+                    <button type="submit" formaction="?handler=Delete&id=@Model.City.Properties[i].Id" formnovalidate
+                            class="btn btn-danger">
+                        Delete
+                    </button>
+                </div>
+            </section>
+            <hr/>
+       }
+    
+   <button type="submit" class="btn btn-success">Save</button>
+    <a asp-page="Index" asp-area="" class="btn btn-primary">Exit</a>
+</form>
+
+

@@ -1,0 +1,45 @@
+﻿@page "{name?}"
+@model CityDetailsModel
+
+<h1>Search City</h1>
+
+<form method="get">
+    <input type="text" name="name" placeholder="Nome da Cidade" class="form-control w-25" />
+    <button type="submit" class="btn btn-primary mt-2">Find</button>
+</form>
+
+<hr />
+
+@if (!Model.IsFound)
+{
+    <span class="text-danger">City does not exist in databank</span>
+}
+
+@if (Model.City != null)
+{
+    <h1>@Model.City.Name</h1>
+
+    <p><strong>Country:</strong> @Model.City.Country?.CountryName</p>
+
+    <h2>Properties</h2>
+
+    @if (Model.City.Properties.Any())
+    {
+        <ul>
+            @foreach (var property in Model.City.Properties)
+            {
+                <li>
+                    <span class="fw-bold">@property.Name</span> - $@property.PricePerNight per night
+                </li>
+            }
+        </ul>
+    }
+    else
+    {
+        <p>No properties available.</p>
+    }
+}
+else
+{
+    <p>Search for a city to see details.</p>
+}
