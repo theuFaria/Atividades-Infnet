@@ -1,0 +1,61 @@
+@model IEnumerable<RotaCerta.Models.Reserva>
+
+@{
+    ViewData["Title"] = "Lista de Reserva";
+}
+
+
+<h1 class="text-center">Suas reservas</h1>
+
+@if (Model.Any())
+{
+    <p>
+        <a asp-action="Create">Fazer Reserva</a>
+    </p>
+
+    <table class="table">
+        <thead>
+        <tr>
+            <th>
+                Nome na Reserva
+            </th>
+            <th>
+                Pacote turístico
+            </th>
+            <th>
+                Data da reserva
+            </th>
+            <th></th>
+        </tr>
+        </thead>
+        <tbody>
+
+        @foreach (var r in Model)
+        {
+            <tr>
+                <td>
+                    @r.Nome
+                </td>
+                <td>
+                    @r.PacoteTuristico.Titulo
+                </td>
+                <td>
+                    @r.DataReserva
+                </td>
+                <td>
+                    <a asp-action="Detalhes" asp-route-id="@r.Id">Detalhes da Reserva</a> |
+                    <a asp-action="Deletar" asp-route-id="@r.Id">Deletar</a>
+                </td>
+            </tr>
+        }
+        </tbody>
+    </table>
+}
+else
+{
+    <div class="p-3 rounded-3 bg-body-secondary">
+    <p class="text-center text-danger fs-2">
+        Você não tem nenhuma reserva feita até o momento.
+    </p>
+    </div>
+}

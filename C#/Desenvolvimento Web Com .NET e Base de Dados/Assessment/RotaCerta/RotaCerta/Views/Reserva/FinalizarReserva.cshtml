@@ -1,0 +1,37 @@
+﻿@model RotaCerta.Models.Reserva
+
+@{
+    ViewData["Title"] = "Finalizar Reserva";
+}
+
+
+<h1 class="text-center text-primary">Deseja finalizar a reserva?</h1>
+
+<section class="d-flex justify-content-center flex-column bg-body-secondary p-4 rounded-4">
+    <div class="d-flex gap-3">
+        <form asp-action="FinalizarReserva" method="post">
+            <input type="hidden" name="Id" value="@Model.Id"/>
+            <button type="submit" class="btn btn-success">Finalizar</button>
+        </form>
+        <a asp-action="Create" class="btn btn-danger">Voltar</a>
+    </div>
+    <h2>Detalhes da reserva</h2>
+    <ul class="list-unstyled">
+        <li>
+            Valor por pessoa: R$ <span class="fw-bold">@Model.PacoteTuristico.PrecoPorPessoa</span>
+        </li>
+        <li>
+            Valor Total sem desconto: <span class="fw-bold">@TempData["PrecoSemDesconto"]</span>
+        </li>
+        <li>
+            <small class="text-secondary">Desconto de 10% aplicado no pagamento via Pix</small> <br/>
+            Valor Total: R$ <span class="fw-bold">@Model.ValorTotal</span>
+        </li>
+        <li>
+            Nome em reserva: <span class="fw-bold">@Model.Nome</span>
+        </li>
+        <li>
+            Quantidade de Pessoas: <span class="fw-bold">@Model.QuantidadeDePessoas</span>
+        </li>
+    </ul>
+</section>

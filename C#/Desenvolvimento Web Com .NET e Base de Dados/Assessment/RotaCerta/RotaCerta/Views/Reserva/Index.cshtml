@@ -1,0 +1,30 @@
+﻿@model Reserva
+
+@{
+    ViewData["Title"] = "Index";
+}
+
+<h1 class="text-center text-primary fw-light">Já tem sua reserva? <br/> Faça uma ou consulte suas reservas atuais.</h1>
+
+<section class="d-flex justify-content-center gap-4 mt-5">
+    
+    <div class="col-md-5">
+        <div class="card shadow-sm h-100 border-0">
+            <div class="card-body text-center p-4">
+                <h3 class="card-title fs-5 fw-semibold">Já fez sua Reserva?</h3>
+                <p class="card-text text-muted">Clique aqui para consultar sua lista de reservas!</p>
+                <a asp-action="Lista" class="btn btn-success btn-lg mt-3">Ver Reservas</a>
+            </div>
+        </div>
+    </div>
+    
+    <div class="col-md-5">
+        <div class="card shadow-sm h-100 border-0">
+            <div class="card-body text-center p-4">
+                <h3 class="card-title fs-5 fw-semibold">Ainda não fez nenhuma reserva ou deseja fazer mais?</h3>
+                <p class="card-text text-muted">Clique aqui para ver nossa lista de pacotes e fazer sua reserva!</p>
+                <a asp-action="Index" asp-controller="PacoteTuristico" class="btn btn-success btn-lg mt-3">Pacotes</a>
+            </div>
+        </div>
+    </div>
+</section>

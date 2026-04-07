@@ -1,0 +1,55 @@
+@model IEnumerable<RotaCerta.Models.PacoteTuristico>
+
+@{
+    ViewData["Title"] = "Index";
+}
+
+
+<div class="d-flex justify-content-between align-items-start w-100">
+    <h1 class="text-center mb-5">Pacotes disponíveis</h1>
+    <a asp-action="Create" class="btn btn-primary text-white text-decoration-none">Adicionar Pacote</a>
+</div>
+
+
+<div class="row w-100">
+    @foreach (var p in Model)
+
+    {
+        <div class="col-md-4 col-sm-6 col-lg-4 mb-4">
+            <div class="card">
+                <div class="card-header text-center bg-primary text-white">
+                    <h3 class="card-title">@p.Titulo</h3>
+                </div>
+                <div class="card-body ">
+                    <ul class="list-unstyled">
+                        <li class="list-group-item">
+                            Destino: @p.Destino.PaisDestino - @p.Destino.CidadeDestino
+                        </li>
+                    </ul>
+                    <ul class="list-unstyled d-flex">
+                        <li class="list-group-item">@p.DataIda.Date&nbsp;-&nbsp;</li>
+                        <li class="list-group-item">@p.DataRetorno.Date </li>
+                    </ul>
+                    <ul class="list-unstyled">
+                        <li class="list-group-item">Quantidade de vagas disponíveis: @p.CapacidadeDisponivel</li>
+                        <li class="list-group-item mt-2">Preço por pessoa: <span
+                                class="fw-bold">@p.PrecoPorPessoa</span></li>
+                    </ul>
+                    <ul class="list-unstyled d-flex gap-1">
+                        <a asp-action="Edit" class="text-decoration-none text-danger" asp-route-id="@p.Id">Editar</a> |
+                        <a asp-action="Details" class="text-decoration-none text-danger"
+                           asp-route-id="@p.Id">Detalhes</a> |
+                        <a asp-action="Delete" class="text-decoration-none text-danger" asp-route-id="@p.Id">Deletar</a>
+                    </ul>
+                </div>
+                <div class="card-footer">
+                    <p class="m-0">Reserva feita com sinal de pelo menos 50% do valor.
+                        <br/>Em caso de desistência reembolso de apenas 25% do valor.</p>
+                    <div class="d-flex justify-content-center w-100 mt-3">
+                        <a asp-controller="Reserva" class="btn btn-primary" asp-action="Create">Reservar</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    }
+</div>

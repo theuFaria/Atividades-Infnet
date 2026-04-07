@@ -1,0 +1,67 @@
+@model RotaCerta.Models.PacoteTuristico
+
+@{
+    ViewData["Title"] = "Criar";
+}
+
+<h1>@ViewData["Title"] Pacote</h1>
+
+<h4>Pacote Turístico</h4>
+<hr/>
+<div class="row">
+    <div class="col-md-4">
+        <form asp-action="Create">
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+            @if (TempData["MensagemDeErro"] != null)
+            {
+                <div class="alert-danger alert">
+                    @TempData["MensagemDeErro"]
+                                                 </div>
+            }
+            <div class="form-group">
+                <label asp-for="Titulo" class="control-label mb-1 mt-2">Nome: </label>
+                <input asp-for="Titulo" class="form-control"/>
+                <span asp-validation-for="Titulo" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="DestinoId" class="control-label mb-1 mt-2">Destino</label>
+                <select asp-for="DestinoId" class="form-control form-select" asp-items="ViewBag.DestinoId">
+                    <option value="" selected="">Escolha o Destino</option>
+                </select>
+                <span asp-validation-for="DestinoId" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="DataIda" class="control-label mb-1 mt-2">Data da Ida: </label>
+                <input asp-for="DataIda" type="date" class="form-control"/>
+                <span asp-validation-for="DataIda" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="DataRetorno" class="control-label mb-1 mt-2">Data de Retorno: </label>
+                <input asp-for="DataRetorno" type="date" class="form-control"/>
+                <span asp-validation-for="DataRetorno" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="CapacidadeMaxima" class="control-label mb-1 mt-2">Capacidade Máxima: </label>
+                <input asp-for="CapacidadeMaxima" class="form-control"/>
+                <span asp-validation-for="CapacidadeMaxima" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="PrecoPorPessoa" class="control-label mt-2">Valor por Pessoa: </label>
+                <input asp-for="PrecoPorPessoa" class="form-control"/>
+                <span asp-validation-for="PrecoPorPessoa" class="text-danger"></span>
+            </div>
+            <div class="form-group mt-3">
+                <input type="submit" value="Criar" class="btn btn-primary"/>
+                <div class="btn btn-primary">
+                    <a asp-action="Index" class="text-white text-decoration-none">Voltar</a>
+                </div>
+            </div>
+        </form>
+    </div>
+</div>
+
+
+
+@section Scripts {
+    @{ await Html.RenderPartialAsync("_ValidationScriptsPartial"); }
+}

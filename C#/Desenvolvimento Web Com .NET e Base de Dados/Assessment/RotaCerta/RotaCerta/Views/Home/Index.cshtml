@@ -1,0 +1,34 @@
+﻿@{
+    ViewData["Title"] = "Rota Certa";
+}
+
+<div class="text-center">
+    <h1 class="display-4 text-primary">Bem-vindo!</h1>
+    <p class="fs-4 text-secondary">Nós somos a empresa de turismo que você precisa</p>
+</div>
+
+<section class="container py-5">
+    <div class="row justify-content-center g-4">
+        
+        <div class="col-md-5">
+            <div class="card shadow-sm h-100 border-0">
+                <div class="card-body text-center p-4">
+                    <h3 class="card-title fs-5 fw-semibold">Já faz parte do nosso time?</h3>
+                    <p class="card-text text-muted">Faça seu login para explorar nossas ofertas e destinos exclusivos!</p>
+                    <a asp-area="Identity" asp-page="/Account/Login" class="btn btn-success btn-lg mt-3">Login</a>
+                </div>
+            </div>
+        </div>
+        
+        <div class="col-md-5">
+            <div class="card shadow-sm h-100 border-0">
+                <div class="card-body text-center p-4">
+                    <h3 class="card-title fs-5 fw-semibold">Ainda não faz parte do nosso time?</h3>
+                    <p class="card-text text-muted">Junte-se a nós e descubra destinos incríveis para suas próximas viagens!</p>
+                    <a asp-area="Identity" asp-page="/Account/Register" class="btn btn-primary btn-lg mt-3">Cadastrar-se</a>
+                </div>
+            </div>
+        </div>
+
+    </div>
+</section>

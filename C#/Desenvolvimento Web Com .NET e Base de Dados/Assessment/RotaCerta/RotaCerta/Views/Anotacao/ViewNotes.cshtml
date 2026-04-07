@@ -1,0 +1,50 @@
+﻿@model Anotacao
+
+@{
+    ViewData["Title"] = "Notas";
+}
+
+
+
+<section class="mt-2 d-flex w-100 align-items-center flex-column">
+    <h2 class="mb-2">@ViewData["Title"]</h2>
+    @if (TempData["Alert"] != null)
+    {
+        <div class="alert alert-success">
+            @TempData["Alert"]
+        </div>
+    }
+    <div class="card shadow-sm w-50">
+        <div class="card-header bg-primary text-white">Nova Anotação</div>
+        <div class="card-body">
+            <form asp-action="ViewNotes" method="post">
+                <div class="mb-3">
+                    <input asp-for="Titulo" class="form-control" placeholder="Digite o nome do arquivo"/>
+                </div>
+                <div class="mb-3">
+                    <label class="form-label">Descrição</label>
+                    <textarea asp-for="Descricao" class="form-control" rows="5"
+                                  placeholder="Escreva sua anotação..."></textarea>
+                </div>
+                <button type="submit" class="btn btn-success w-100">
+                    Salvar anotação
+                </button>
+            </form>
+        </div>
+    </div>
+    <div class="bg-body-secondary shadow w-50">
+    <ul class="list-group mt-3 ps-3 pe-3">
+        @if (Model.Arquivos != null)
+        {
+            <h3 class="text-center">Ver notas: </h3>
+            for (int i = 0; i < Model.Arquivos.Count; i++)
+            {
+                <li class="list-group-item rounded-4 mb-3 d-flex justify-content-between d-flex justify-content-center align-items-center">
+                    @Model.Arquivos.ElementAt(i)
+                    <a asp-route-fileName="@Model.Arquivos[i]" asp-action="ViewNote" class="btn btn-primary">Ver</a>
+                </li>
+            }
+        }
+    </ul>
+    </div>
+</section>

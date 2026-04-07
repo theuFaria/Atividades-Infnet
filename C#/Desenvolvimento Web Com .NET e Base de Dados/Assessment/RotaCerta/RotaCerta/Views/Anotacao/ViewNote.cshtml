@@ -1,0 +1,17 @@
+﻿@model Anotacao
+
+@{
+    
+}
+
+<section class="card">
+    <div class="card-title bg-primary">
+        <h1 class="text-center">@Model.Titulo</h1>
+    </div>
+    <div class="card-body">
+        <p>@Model.Descricao</p>
+    </div>
+    <div class="card-footer">
+        <a asp-action="ViewNotes" class="btn btn-warning">Voltar</a>
+    </div>
+</section>
